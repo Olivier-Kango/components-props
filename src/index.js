@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App, { Cat, Cats, Cato, Calendar } from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App name = "Olivier" />
+    <App name="Juan" />
+    <Cat />
+    <Cats />
+    <Cato />
+    <Calendar />
   </React.StrictMode>
 );
 
