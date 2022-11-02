@@ -65,7 +65,7 @@ import './App.css';
 //   );
 // }
 
-const App = ({name}) => <p>{`Hi ${name}!`}</p>;
+const App = ({name}) => <p className='para'>{`Hi ${name}!`}</p>;
 export default App;
 
 export class Cat extends React.Component {
@@ -75,7 +75,7 @@ export class Cat extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='todo'>
         <p>{`The cat is ${this.state.sleeping ? "sleeping" : "eating"}`}</p>
         <button onClick={() => this.setState({ sleeping: false })}>
           Wake up!
@@ -86,7 +86,7 @@ export class Cat extends React.Component {
 }
 
 export const Cato = ({timeToEat}) => (
-  <p>{`I'm ${timeToEat ? 'happy' : 'sad'}`}</p>
+  <p className='para'>{`I'm ${timeToEat ? 'happy' : 'sad'}`}</p>
 )
 
 export class Cats extends React.Component {
@@ -96,7 +96,7 @@ export class Cats extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='todo'>
         <Cato timeToEat={this.state.timeToEat} />
         <button onClick={() => this.setState({ timeToEat: true })}>
           Time to eat!
@@ -122,10 +122,33 @@ export class Calendar extends React.Component {
   // }
   render() {
     return (
-      <div>
+      <div className='todo'>
         <h3>What date is it?</h3>
         { /* Change code below this line */ }
         <CurrentDate date={Date()} />
+        { /* Change code above this line */ }
+      </div>
+    );
+  }
+};
+
+const List = (props) => {
+  return <p>{props.tasks.join(', ')}</p>
+};
+
+export class ToDo extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+  render() {
+    return (
+      <div className='todo'>
+        <h1>To Do Lists</h1>
+        <h2>Today</h2>
+        { /* Change code below this line */ }
+        <List tasks={["Olivier", "Theo"]}/>
+        <h2>Tomorrow</h2>
+        <List tasks={["walk dog", "workout", "Movies"]} />
         { /* Change code above this line */ }
       </div>
     );
