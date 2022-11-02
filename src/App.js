@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import React from 'react';
 import './App.css';
+import PropTypes from 'prop-types';
 // import ReactDOM from 'react-dom';
 
 // function App(props) {
@@ -150,6 +151,145 @@ export class ToDo extends React.Component {
         <h2>Tomorrow</h2>
         <List tasks={["walk dog", "workout", "Movies"]} />
         { /* Change code above this line */ }
+      </div>
+    );
+  }
+};
+
+
+const Items = (props) => {
+  return <h1 className='todo'>Current Quantity of Items in Cart: {props.quantity}</h1>
+};
+
+Items.propTypes = { quantity: PropTypes.number.isRequired }
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+export class ShoppingCart extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+  render() {
+    return <Items />
+  }
+};
+
+
+
+export class Apps extends React.Component {
+  // constructor(props) {
+  //   super(props);
+
+  // }
+  render() {
+    return (
+        <div className='todo'>
+            { /* Change code below this line */ }
+            <Welcome name = 'Olivier'/>
+            { /* Change code above this line */ }
+        </div>
+    );
+  }
+};
+
+class Welcome extends React.Component {
+  // constructor(props) {
+  //   super(props);
+
+  // }
+  render() {
+    return (
+        <div>
+          { /* Change code below this line */ }
+          <p>Hello, <strong>{this.props.name}</strong>!</p>
+          { /* Change code above this line */ }
+        </div>
+    );
+  }
+};
+
+
+export class CampSite extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+  render() {
+    return (
+      <div className='todo'>
+        <Camper/>
+      </div>
+    );
+  }
+};
+// Change code below this line
+const Camper = (props) => {
+    return (
+      <p>{ props.name }</p>
+    )
+}
+
+Camper.defaultProps = { name: 'CamperBot' }
+Camper.propTypes = { name: PropTypes.string.isRequired }
+
+
+export class StatefulComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        firstName: 'Kiezekie'
+    }
+  }
+  render() {
+    return (
+      <div className='todo'>
+        <h1>{this.state.firstName}</h1>
+      </div>
+    );
+  }
+};
+
+export class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'freeCodeCamp'
+    }
+  }
+  render() {
+    const name = this.state.name;
+    return (
+      <div className='todo'>
+        <h1>{name}</h1>
+      </div>
+    );
+  }
+};
+
+
+
+
+export class MyComponents extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Initial State'
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // Change code below this line
+    this.setState({
+      name: 'React Rocks!'
+    })
+    // Change code above this line
+  }
+  render() {
+    return (
+      <div className='todo'>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.name}</h1>
       </div>
     );
   }
