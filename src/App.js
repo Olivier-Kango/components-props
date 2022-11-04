@@ -1,7 +1,10 @@
 // import logo from './logo.svg';
-import React from 'react';
+import React,{ Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
+import B from './B';
+import Output from './Output';
+
 // import ReactDOM from 'react-dom';
 
 // function App(props) {
@@ -279,18 +282,106 @@ export class MyComponents extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    // Change code below this line
     this.setState({
-      name: 'React Rocks!'
+      name: 'React Rocks!',
     })
-    // Change code above this line
   }
   render() {
+    
     return (
       <div className='todo'>
         <button onClick={this.handleClick}>Click Me</button>
+        
         <h1>{this.state.name}</h1>
       </div>
     );
   }
 };
+
+
+// HANDLING EVENTS
+// React event names are camelCased. Example: onClick, instead of onclick.
+// In JSX, you pass a function as event handler, instead of a string.
+// In JS, you add an event to an element using addEventListener(). In React that is not necessary, you can just pass it as props.
+// React events are called SyntheticEvents. The SyntheticEvent is just a cross-browser wrapper of the browser's event system that makes sure that events behave the same in all browsers. The interface (the methods you can use) is the same as the browser implementation, you just need to follow the syntax rules described above.
+
+// function App() {
+//   const onChangeHandler = (event) => {
+//     console.log(event.target.value);
+//   };
+//   return (
+//     <div>
+//       <div>
+//         Name :<input onChange={onChangeHandler} />
+//       </div>
+//       <div>
+//         Lastname :<input onChange={onChangeHandler} />
+//       </div>
+//     </div>
+//   );
+// }
+
+
+// LIFECYCLE
+// --------------------------------------------------------------------------------------------
+// React components's lifecyc le of 3 phases :
+// 1. Mounting (putting elements in the DOM):
+    // constructor().
+    // getDerivedStateFromProps().
+    // render() (mandatory).
+    // componentDidMount(). ***********************************
+// 2. Updating
+    // getDerivedStateFromProps().
+    // shouldComponentUpdate().
+    // render()(mandatory).
+    // getSnapshotBeforeUpdate().
+    // componentDidUpdate(). ******************************************
+// 3. Unmounting
+    // componentWillUnmount()
+
+
+// export class Todo extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       todo: null,
+//     }
+//   }
+
+//   componentDidMount() {
+//     fetch('https://jsonplaceholder.typicode.com/todos/1')
+//       .then(response => response.json())
+//       .then(todo => this.setState({ todo }))
+//   }
+// }
+
+
+// STATE AND LIFECYCLE
+// -----------------------------------------------------------------------------------------
+
+
+// Lifting state up
+// ---------------------------------------------------------------------------------------------
+
+export class A extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleTextChange = this.handleTextChange.bind(this);
+    this.state = {text: ''};
+  }
+
+  handleTextChange(newText) {
+    this.setState({text: newText});
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+      <B text={this.state.text}
+        handleTextChange={this.handleTextChange} />
+      <Output text={this.state.text} />
+      </React.Fragment>
+    );
+  }
+}

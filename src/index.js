@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App, { Cat, Cats, Cato, Calendar, ToDo, ShoppingCart, Apps, CampSite, StatefulComponent, MyComponent, MyComponents } from './App';
+import App, { Cat, Cats, Cato, Calendar, ToDo, ShoppingCart, Apps, CampSite, StatefulComponent, MyComponent, MyComponents, A } from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,6 +20,8 @@ root.render(
     <StatefulComponent />
     <MyComponent />
     <MyComponents />
+    {/* <Todo /> */}
+    <A />
   </React.StrictMode>
 );
 
